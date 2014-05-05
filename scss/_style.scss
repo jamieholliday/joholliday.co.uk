@@ -1,0 +1,37 @@
+$bg: #383c48;
+
+body {
+	background-color: $bg;
+}
+
+.timeline {
+	width: 10px;
+	margin: 0 auto;
+	position: relative;
+	
+	ul {
+		padding: 0;
+		margin: 0;
+		position: absolute;
+		height: 1400px;
+		width: 10px;
+		background: lighten($bg, 8%);
+	}
+
+	.event {
+		list-style: none;
+		width: 20px;
+		height: 20px;
+		background: red;
+		border-radius: 100%;
+		margin-left: -5px;
+		position: absolute;
+	}
+
+	@for $i from 1 through 5 {
+		.event-#{$i} {
+			top: 200px * $i;
+		}
+	}
+
+}
