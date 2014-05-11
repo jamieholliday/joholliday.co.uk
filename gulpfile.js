@@ -22,7 +22,7 @@ var paths = {
 
 gulp.task('default', function() {
 	http.createServer(
-		ecstatic({ root: __dirname + '/' })
+		ecstatic({ root: __dirname + '/public' })
 	).listen(8080);
 
 	console.log('listening on port 8080');
