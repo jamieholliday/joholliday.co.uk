@@ -2,6 +2,7 @@
   "name": "joholliday.co.uk",
   "version": "0.0.1",
   "description": "Portfolio",
+  "author": "Jamie Holliday",
 
   "scripts": {
     "start": "node ./bin/www"
