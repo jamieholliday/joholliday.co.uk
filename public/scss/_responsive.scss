@@ -47,3 +47,22 @@
 		left: 40px;
 	}
 }
+
+@media (max-width: 660px) {
+	.header-img {
+		margin: 20px auto;
+		width: 100%;
+	}
+}
+
+@media (max-width: 560px) {
+	.first-col,
+	.second-col {
+		width: 100%;
+	}
+
+	.header-img {
+		margin: 20px auto;
+		width: 200px;
+	}
+}

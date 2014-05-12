@@ -13,11 +13,13 @@ body {
 
 h1 {
 	font-size: 2.4em;
+	color: $highlight2;
 }
 
 h2 {
 	font-size: 1.6em;
 }
+
 
 @font-face {
 	font-family: 'icomoon';
@@ -59,7 +61,7 @@ a {
 }
 
 .wrapper {
-	background: $bg;
+	background: $bg url('../img/furley_bg.png');
 }
 
 header {
@@ -67,6 +69,28 @@ header {
 	padding: $box-padding;
 	margin-bottom: 40px;
 	color: darken($lightGrey, 30%);
+	background: #fff;
+}
+
+.header-text {
+	margin-left: 50px;
+
+	span {
+		display: block;
+		font-size: 0.7em;
+		margin-top: 5px;
+	}
+}
+
+.header-img {
+	margin: 20px auto;
+	width: 300px;
+}
+
+.header-img img{
+	max-width: 100%;
+	border-radius: 100%;
+	width: 100%;
 }
 
 .timeline {
@@ -109,8 +133,13 @@ header {
 
 .event {
 	list-style: none;
+	//margin-top: -150px;
 	margin-top: 20px;
 	position: relative;
+
+	&.event-1 {
+		//margin-top: 20px;
+	}
 
 	.event-container {
 		background: #fff;
@@ -122,6 +151,7 @@ header {
 		-webkit-transition: opacity .7s ease;
 		-moz-transition: opacity .7s ease;
 		transition: opacity .7s ease;
+		max-width: 520px;
 	}
 
 	.event-title {
@@ -139,6 +169,17 @@ header {
 
 	.event-links {
 		word-wrap: break-word;
+
+		a {
+			display: block;
+			margin-top: 10px;
+		}
+	}
+
+	img {
+		width: 100%;
+		max-width: 500px;
+		margin-top: 20px;
 	}
 
 	&:before {
@@ -213,12 +254,11 @@ header {
 	}
 }
 
-.contact {
+footer {
 	background: $dark;
 	z-index: 20;
 	position: relative;
 	padding: $box-padding;
-	border-top: 20px solid $bg;
 
 	ul {
 		text-align: center;
@@ -245,11 +285,4 @@ header {
 			}
 		}
 	}
-}
-
-footer {
-	background: #fff;
-	z-index: 20;
-	position: relative;
-	padding: $box-padding;
 }
