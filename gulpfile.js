@@ -9,17 +9,20 @@ var gulp = require('gulp'),
 
 var paths = {
 	styles: {
-		src: 'scss/*.scss',
-		dest: 'css'
+		src: 'public/scss/*.scss',
+		dest: 'public/css'
 	},
 	html: {
-		src: 'index.html'
+		src: 'public/index.html'
+	},
+	js: {
+		src: 'public/js/*.js'
 	}
 };
 
 gulp.task('default', function() {
 	http.createServer(
-		ecstatic({ root: __dirname + '/' })
+		ecstatic({ root: __dirname + '/public' })
 	).listen(8080);
 
 	console.log('listening on port 8080');
@@ -29,19 +32,13 @@ gulp.task('default', function() {
 
 	gulp.watch(paths.styles.src, ['styles']);
 	gulp.watch(paths.html.src, ['html']);
-});
-
-//opens browser window
-gulp.task('open', function() {
-	gulp.src(paths.html.src)
-	.pipe(open('', {url: 'http://localhost:8080'}));
-	//need to refresh page and click lr icon to get livereload fully working
+	gulp.watch(paths.js.src, ['js']);
 });
 
 //runs sass task and live reload on scss changes
 gulp.task('styles', function() {
 	return gulp.src(paths.styles.src)
-		.pipe(sass({ 
+		.pipe(sass({
 				sourceComments: 'map',
 				includePaths : [paths.styles.src]
 			}
@@ -54,6 +51,12 @@ gulp.task('styles', function() {
 gulp.task('html', function() {
 	return gulp.src(paths.html.src)
 		.pipe(refresh(server));
+});
+
+//runs livereload on all js changes
+gulp.task('js', function() {
+	return gulp.src(paths.js.src)
+	.pipe(refresh(server));
 });
 
 //live reload server

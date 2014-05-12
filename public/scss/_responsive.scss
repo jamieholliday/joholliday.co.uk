@@ -1,0 +1,49 @@
+@media (max-width: 767px) {
+	.event {
+		&:before {
+			left: 25px;
+		}
+
+		&:after {
+			left: 25px;
+		}
+
+		&.event-left {
+			.event-container {
+				margin-left: 70px;
+				position: relative;
+				margin-right: 0;
+				-webkit-box-shadow: -2px 2px 5px rgba(50, 58, 69, 0.07);
+				-moz-box-shadow: -2px 2px 5px rgba(50, 58, 69, 0.07);
+				box-shadow: -2px 2px 5px rgba(50, 58, 69, 0.07);
+
+				&:before {
+				border-top: 15px solid transparent;
+				border-bottom: 15px solid transparent;
+				border-right: 15px solid #fff;
+				border-left: 0;
+				position: absolute;
+				left:-15px;
+				}
+			}
+		}
+
+		&.event-right {
+			.event-container {
+				margin-left: 70px;
+			}
+
+			&:before {
+
+			}
+		}
+	}
+
+	.date {
+		margin: 50px 0;
+	}
+
+	.line {
+		left: 40px;
+	}
+}
