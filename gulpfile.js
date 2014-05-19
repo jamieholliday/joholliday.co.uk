@@ -1,11 +1,7 @@
 var gulp = require('gulp'),
 	refresh = require('gulp-livereload'),
 	sass = require('gulp-sass'),
-	lr = require('tiny-lr'),
-	http = require('http'),
-	ecstatic = require('ecstatic');
-
-	server = lr();
+	connect = require('gulp-connect');
 
 var paths = {
 	styles: {
@@ -20,16 +16,16 @@ var paths = {
 	}
 };
 
-gulp.task('default', function() {
-	http.createServer(
-		ecstatic({ root: __dirname + '/public' })
-	).listen(8080);
+gulp.task('default', ['connectDev', 'watch']);
 
-	console.log('listening on port 8080');
+gulp.task('connectDev', function() {
+	connect.server({
+		livereload: true,
+		port: 8080
+	})
+});
 
-	gulp.run('lr-server', 'styles', 'html');
-
-
+gulp.task('watch', function() {
 	gulp.watch(paths.styles.src, ['styles']);
 	gulp.watch(paths.html.src, ['html']);
 	gulp.watch(paths.js.src, ['js']);
@@ -44,24 +40,17 @@ gulp.task('styles', function() {
 			}
 		))
 		.pipe(gulp.dest(paths.styles.dest))
-		.pipe(refresh(server));
+		.pipe(connect.reload());
 });
 
 //runs livereload on html changes
 gulp.task('html', function() {
 	return gulp.src(paths.html.src)
-		.pipe(refresh(server));
+		.pipe(connect.reload());
 });
 
 //runs livereload on all js changes
 gulp.task('js', function() {
 	return gulp.src(paths.js.src)
-	.pipe(refresh(server));
-});
-
-//live reload server
-gulp.task('lr-server', function() {
-	server.listen(35729, function(err) {
-		if(err) return console.log(err);
-	});
+	.pipe(connect.reload());
 });
