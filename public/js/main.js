@@ -4,14 +4,15 @@ window.addEventListener('load', function() {
         evtArr,
         checkVisibility,
         scrollCb,
-        isElementInViewport,
+        shouldElementByShown,
         showElement;
+
 
     checkVisibility = function(arr) {
         var visitibility;
 
         arr.forEach(function(item) {
-            if(isElementInViewport(item.el)) {
+            if(shouldElementByShown(item.el)) {
                 showElement(item.el);
                 item.visible = true;
             }
@@ -30,14 +31,10 @@ window.addEventListener('load', function() {
         el.classList.remove('ishidden');
     };
 
-    isElementInViewport = function(el) {
+    shouldElementByShown = function(el) {
         var rect = el.getBoundingClientRect();
-        return (
-            rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-        );
+
+        return rect.top <= window.innerHeight / 1.5;
     };
 
     scrollCb = function() {

@@ -1,4 +1,9 @@
 @media (max-width: 767px) {
+
+	.header-text {
+		margin-left: 0;
+	}
+	
 	.event {
 
 		margin-top: 20px;
@@ -9,6 +14,11 @@
 
 		&:after {
 			left: 25px;
+		}
+
+		.event-date {
+			text-align: left;
+			margin-bottom: 10px;
 		}
 
 		&.event-left {
