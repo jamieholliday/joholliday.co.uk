@@ -21,7 +21,8 @@ gulp.task('default', ['connectDev', 'watch']);
 gulp.task('connectDev', function() {
 	connect.server({
 		livereload: true,
-		port: 8080
+		port: 8080,
+		root: 'public'
 	})
 });
 
